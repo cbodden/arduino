@@ -5,7 +5,7 @@ int currentState = 0;
 int previousState = 0;
 
 void setup(){
-  //switched pinMode1 to pinMode11
+  //switched pinMode1 to pinMode11 due to TX/RX
   pinMode(11, OUTPUT); 
   pinMode(2, OUTPUT); 
   pinMode(3, OUTPUT); 
