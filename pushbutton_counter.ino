@@ -1,4 +1,4 @@
-/* this is a counter for any two player game in which the score does not have to go higher than 9 (numeric) or f (hex)
+/* this is a counter in which the score does not to go higher than 9 (numeric) or f (hex)
 7 segment display used is 276-075 from radio shack, pinout : http://www.escol.com.my/Datasheets_specs/pinout-1.jpg
 cesar@pissedoffadmins.com */
 
@@ -9,21 +9,21 @@ int currentState = 0;
 int previousState = 0;
 
 void setup(){
-  pinMode(2, OUTPUT); 
-  pinMode(3, OUTPUT); 
-  pinMode(4, OUTPUT); 
-  pinMode(5, OUTPUT); 
-  pinMode(6, OUTPUT); 
-  pinMode(7, OUTPUT); 
-  pinMode(8, OUTPUT); 
-  pinMode(9, OUTPUT);
-  pinMode(10, OUTPUT);
+  pinMode(2, OUTPUT);   // a
+  pinMode(3, OUTPUT);   // b
+  pinMode(4, OUTPUT);   // c
+  pinMode(5, OUTPUT);   // d
+  pinMode(6, OUTPUT);   // e
+  pinMode(7, OUTPUT);   // f
+  pinMode(8, OUTPUT);   // g
+  pinMode(9, OUTPUT);   // left decimal
+  pinMode(10, OUTPUT);  // right decimal
   pinMode(switchPin, INPUT);
   //Serial.begin(9600);
   segment_digits_write(currentState);
 }
 
-byte segment_digits_map[16][9] = { 
+byte segment_digits_map[16][9] = {
   { 0,0,0,0,0,0,1,1,1 },  // 0
   { 1,0,0,1,1,1,1,1,1 },  // 1
   { 0,0,1,0,0,1,0,1,1 },  // 2
@@ -44,7 +44,7 @@ byte segment_digits_map[16][9] = {
 
 void segment_digits_write(byte digit){
   byte pin = 2;
-  for (byte segCount = 0; segCount < 9; ++segCount) {
+  for (byte segCount = 0; segCount < 9; ++segCount){
     digitalWrite(pin, segment_digits_map[digit][segCount]);
     ++pin;
   }
@@ -58,8 +58,6 @@ void loop(){
     currentState++;
     //Serial.print("Displaying: ");
     //Serial.println(currentState);
-    //Serial.print("Read switch input: ");
-    //Serial.println(digitalRead(switchPin));
     if(currentState != previousState){
       segment_digits_write(currentState);
       if(currentState == 16){
