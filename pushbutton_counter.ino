@@ -1,6 +1,6 @@
-/* this is a counter in which the score does not to go higher than 9 (numeric) or f (hex)
-7 segment display used is 276-075 from radio shack, pinout : http://www.escol.com.my/Datasheets_specs/pinout-1.jpg
-cesar@pissedoffadmins.com */
+  /* this is a counter in which the score does not to go higher than 9 (numeric) or f (hex)
+  7 segment display used is 276-075 from radio shack, pinout : http://www.escol.com.my/Datasheets_specs/pinout-1.jpg
+  cesar@pissedoffadmins.com */
 
 const int switchPin = 13;
 int val = 0;
