@@ -1,9 +1,6 @@
-/*
-this is a counter for any two player game in which the score does not have to go higher than 9 (numeric) or f (hex)
-7 segment display used is 276-075 from radio shack
-pinout : http://www.escol.com.my/Datasheets_specs/pinout-1.jpg
-cesar@pissedoffadmins.com
-*/
+/* this is a counter for any two player game in which the score does not have to go higher than 9 (numeric) or f (hex)
+7 segment display used is 276-075 from radio shack, pinout : http://www.escol.com.my/Datasheets_specs/pinout-1.jpg
+cesar@pissedoffadmins.com */
 
 const int switchPin = 13;
 int val = 0;
@@ -44,18 +41,6 @@ byte segment_digits_map[16][9] = {
   { 0,1,1,0,0,0,0,1,1 },  // 14 - E
   { 0,1,1,1,0,0,0,1,1 }   // 15 - F
 };
-
-void blankDisplay(){
-  digitalWrite(2, HIGH);
-  digitalWrite(3, HIGH);
-  digitalWrite(4, HIGH);
-  digitalWrite(5, HIGH);
-  digitalWrite(6, HIGH);
-  digitalWrite(7, HIGH);
-  digitalWrite(8, HIGH);
-  digitalWrite(9, HIGH);
-  digitalWrite(10, HIGH);
-  }
 
 void segment_digits_write(byte digit){
   byte pin = 2;
