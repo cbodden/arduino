@@ -1,8 +1,9 @@
 /*
  * 4pin brute
  *
- * this sketch outputs numbers 0000 - 9999 as an hid device for pin brute 
- * forcing. testing against android devices of version 4.1.x and less.
+ * this sketch outputs numbers 0000 - 9999 as an hid device for pin brute
+ * forcing. tested against android devices of version 4.1.x and less using
+ * a teensy 3.0.
  *
  * cesar@pissedoffadmins.com
  *
