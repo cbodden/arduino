@@ -55,7 +55,8 @@ void loop()
 
   // on specific pin press, generate specified random value  
   if (digitalRead(d100Pin) == HIGH) {
-    randNumber = random(0, 99);
+    // print a random number from 0 to 99
+    randNumber = random(0, 100);
     Serial.print ("Pressed d100 -- ");
     Serial.println(randNumber);
     // calculation and print to displays function
@@ -63,42 +64,42 @@ void loop()
   }
 
   if (digitalRead(d20Pin) == HIGH) {
-    randNumber = random(1, 20);
+    randNumber = random(1, 21);
     Serial.print ("Pressed d20 -- ");
     Serial.println(randNumber);
     spin(randNumber);
   }
 
   if (digitalRead(d12Pin) == HIGH) {
-    randNumber = random(1, 12);
+    randNumber = random(1, 13);
     Serial.print ("Pressed d12 -- ");
     Serial.println(randNumber);
     spin(randNumber);
   }
 
   if (digitalRead(d10Pin) == HIGH) {
-    randNumber = random(1, 10);
+    randNumber = random(1, 11);
     Serial.print ("Pressed d10 -- ");
     Serial.println(randNumber);
     spin(randNumber);
   }
 
   if (digitalRead(d8Pin) == HIGH) {
-    randNumber = random(1, 8);
+    randNumber = random(1, 9);
     Serial.print ("Pressed d8 -- ");
     Serial.println(randNumber);
     spin(randNumber);
   }
 
   if (digitalRead(d6Pin) == HIGH) {
-    randNumber = random(1, 6);
+    randNumber = random(1, 7);
     Serial.print ("Pressed d6 -- ");
     Serial.println(randNumber);
     spin(randNumber);
   }
 
   if (digitalRead(d4Pin) == HIGH) {
-    randNumber = random(1, 4);
+    randNumber = random(1, 5);
     Serial.print ("Pressed d4 -- ");
     Serial.println(randNumber);
     spin(randNumber);
@@ -117,6 +118,6 @@ void spin(byte randNumber)
     shiftOut(dataPin, clockPin, LSBFIRST, numbers[c]); 
     shiftOut(dataPin, clockPin, LSBFIRST, numbers[e]); 
     digitalWrite(latchPin, HIGH);
-    delay(500);
+    delay(750);
   }
 }
