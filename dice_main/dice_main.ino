@@ -1,3 +1,63 @@
+/*
+  d4 - d100 Dice roller using multiplexed 74HC595's to dual 7 segment LED's
+
+  Connections:
+
+    Vcc = 3.3v - 2 x AA 
+    
+    ATmega328:
+    ATmega328 pin 1  (RST)     => Vcc
+    ATmega328 pin 2  (D0 RX)   => Not Connected
+    ATmega328 pin 3  (D1 TX)   => Not Connected
+    ATmega328 pin 4  (D2)      => 74HC595 (Both) pin 12 (STCP) 
+    ATmega328 pin 5  (D3 PWM)  => 74HC595 (Left) pin 14 (DS)
+    ATmega328 pin 6  (D4)      => 74HC595 (Both) pin 11 (SHCP)
+    ATmega328 pin 7  (VCC)     => Vcc
+    ATmega328 pin 8  (GND)     => Ground
+    ATmega328 pin 9  (XLAT1)   => Cap 1
+    ATmega328 pin 10 (XLAT2)   => Cap 2
+    ATmega328 pin 11 (D5 PWM)  => Not Connected
+    ATmega328 pin 12 (D6 PWM)  => d100 Button
+    ATmega328 pin 13 (D7)      => d20 Button
+    ATmega328 pin 14 (D8)      => d12 Button
+    ATmega328 pin 15 (D9 PWM)  => d10 Button
+    ATmega328 pin 16 (D10 PWM) => d8 Button
+    ATmega328 pin 17 (D11 PWM) => d6 Button
+    ATmega328 pin 18 (D12)     => d4 Button
+    ATmega328 pin 19 (D13)     => Power LED
+    ATmega328 pin 20 (AVCC)    => Vcc
+    ATmega328 pin 21 (AREF)    => Vcc
+    ATmega328 pin 22 (GND)     => Ground
+    ATmega328 pin 23 (A0)      => Not Connected
+    ATmega328 pin 24 (A1)      => Not Connected
+    ATmega328 pin 25 (A2)      => Not Connected
+    ATmega328 pin 26 (A3)      => Not Connected
+    ATmega328 pin 27 (A4)      => Not Connected
+    ATmega328 pin 28 (A5)      => Not Connected
+    
+    Left Register (Registers the same except for pins 9 & 14):
+    74HC595 pin 1  (Q1)        => LED Pin 6  (B)
+    74HC595 pin 2  (Q2)        => LED Pin 4  (C)
+    74HC595 pin 3  (Q3)        => LED Pin 2  (D)
+    74HC595 pin 4  (Q4)        => LED Pin 1  (E)
+    74HC595 pin 5  (Q5)        => LED Pin 9  (F)
+    74HC595 pin 6  (Q6)        => LED Pin 10 (G)
+    74HC595 pin 7  (Q7)        => LED Pin 5  (DP)
+    74HC595 pin 8  (GND)       => Ground
+    74HC595 pin 9  (Q7S)       => 74HC595 pin 14 (Right Register)
+    74HC595 pin 10 (MR)        => Vcc (High)
+    74HC595 pin 11 (SHCP)      => ATmega328 pin 6 (Both Registers)
+    74HC595 pin 12 (STCP)      => ATmega328 pin 4 (Both Registers)
+    74HC595 pin 13 (OE)        => Ground (Low)
+    74HC595 pin 14 (DS)        => ATmega328 pin 14 (Left Register)
+    74HC595 pin 15 (Q0)        => LED Pin 7  (A)
+    74HC595 pin 16 (Vcc)       => Vcc
+
+    LED pin 3 or 8 => 220 Ohm resistor => Vcc
+    
+    www.pissedoffadmins.com
+ */
+
 const int latchPin = 2;  // Pin 5 of 74HC595 (Latch)
 const int dataPin  = 3;  // Pin 6 of 74HC595 (Data)
 const int clockPin = 4;  // Pin 7 of 74HC595 (Clock)
@@ -30,6 +90,7 @@ void setup()
   // initializing input pins
   pinMode(d100Pin, INPUT);
   pinMode(d20Pin, INPUT);
+  pinMode(d12Pin, INPUT);
   pinMode(d12Pin, INPUT);
   pinMode(d10Pin, INPUT);
   pinMode(d8Pin, INPUT);
