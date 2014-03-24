@@ -161,16 +161,16 @@ void spin(byte randNumber) {
 }
 
 void roller() {
-  int a[8] = { 
+  int rollA[8] = { 
     255,127,191,223,239,255,255,255     };
-  int b[8] = { 
+  int rollB[8] = { 
     127,255,255,255,255,239,247,251     };
 
-  for (int rollNumb=0; rollNumb < 2; rollNumb++) {
-    for (int x=0; x < 8; x++) {
+  for (int rollNumb=0; rollNumb<2; rollNumb++) {
+    for (int x=0; x<8; x++) {
       digitalWrite(latchPin, LOW);
-      shiftOut(dataPin, clockPin, LSBFIRST, a[x]);
-      shiftOut(dataPin, clockPin, LSBFIRST, b[x]);
+      shiftOut(dataPin, clockPin, LSBFIRST, rollA[x]);
+      shiftOut(dataPin, clockPin, LSBFIRST, rollB[x]);
       digitalWrite(latchPin, HIGH);
       delay(50);
     }
