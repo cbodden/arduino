@@ -58,9 +58,9 @@
  www.pissedoffadmins.com
  */
 
-const int latchPin = 2;  // Pin 5 of 74HC595 (Latch)
-const int dataPin  = 3;  // Pin 6 of 74HC595 (Data)
-const int clockPin = 4;  // Pin 7 of 74HC595 (Clock)
+const int latchPin = 2;  // Pin 12 of 74HC595 (Latch)
+const int dataPin  = 3;  // Pin 14 of 74HC595 (Data)
+const int clockPin = 4;  // Pin 11 of 74HC595 (Clock)
 const int d100Pin = 6;   // d100 button pin
 const int d20Pin = 7;    // d20 button pin
 const int d12Pin = 8;    // d12 button pin
@@ -161,6 +161,8 @@ void spin(byte randNumber) {
 }
 
 void roller() {
+  // roller creates the spinning effect on dice rolls
+  // these two ints are the decimal positions for segment light
   int rollA[8] = { 
     255,127,191,223,239,255,255,255     };
   int rollB[8] = { 
